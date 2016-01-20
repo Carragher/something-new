@@ -1,0 +1,118 @@
+Package com.bju.cps450;
+
+Helpers
+
+  tab                 = 9;
+  line_feed           = 10;
+  carriage_return     = 13;
+  underscore = '_';
+
+  lfcr                = [10 + 13];
+
+  negative = '-';
+
+  letter              = ['a'..'z'] | ['A'..'Z'];
+  octal               = ['0'..'7'];
+  digit               = ['0'..'9'];
+  printable = [32..127];
+  blank = ' ' | tab;
+
+
+  
+Tokens
+
+  string               = 'string';
+
+  bool = 'boolean';
+
+  begin = 'begin';
+
+  class = 'class';
+
+  else = 'else';
+
+  end = 'end';
+
+  from = 'from';
+
+  if = 'if';
+
+  inherits = 'inherits';
+
+  int = 'int';
+
+  is = 'is';
+
+  loop = 'loop';
+
+  me = 'me';
+
+  new = 'new';
+
+  null = 'null';
+
+  while = 'while';
+
+  then                 = 'then';
+
+  true                 = 'true';
+
+  false                = 'false';
+
+  and                  = 'and';
+
+  or                   = 'or';
+
+  not                  = 'not';
+
+  tab                  = 'tab';
+
+  dot                  = '.';
+
+  assign_op = ':=';
+
+  l_paren = '(';
+
+  r_paren = ')';
+
+  l_bracket = '[';
+
+  r_bracket = ']';
+
+  comma = ',';
+
+  semi_colon = ';';
+
+  colon = ':';
+
+  period = '.';
+
+  concat = '&';
+
+  plus = '+';
+
+  minus = '-';
+
+  mult = '*';
+
+  div = '/';
+
+  equal = '=';
+
+
+
+  // An identifier is a sequence of letters, digits, and
+  //underscores (_) starting with an underscore or letter,
+  //other than a keyword.
+
+  id = (underscore | letter) ( digit | letter | underscore)*;
+
+  comment = '~' [printable - '~']* ('~')?;
+
+  identifier = ('_' | letter) (letter | digit | '_')*;
+
+  int_literal = negative? digit+;
+
+  str_lit = '"' (([printable - ['"' + '\']]) | ('\' ((octal octal octal) | 't' | 'n' | 'f' | 'r' | '"' | '\')))* '"';
+
+  illegal_str_lit = '"' ([printable - '"'] | '\"')* '"';
